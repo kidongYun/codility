@@ -4,22 +4,20 @@ import java.util.Arrays;
 
 public class TapeEquilibrium {
     public int solution(int[] A) {
-        int total = Arrays.stream(A).sum();
+        int right = Arrays.stream(A).sum();
         int left = 0;
-        int prevDiff = total;
+        int minDiff = Integer.MAX_VALUE;
 
-        for(int i=0; i<A.length; i++) {
+        for(int i=0; i<A.length - 1; i++) {
             left += A[i];
-            int right = total - left;
+            right -= A[i];
             int diff = Math.abs(left - right);
 
-            if(prevDiff < diff) {
-                return prevDiff;
+            if(minDiff > diff) {
+                minDiff = diff;
             }
-
-            prevDiff = diff;
         }
 
-        return prevDiff;
+        return minDiff;
     }
 }

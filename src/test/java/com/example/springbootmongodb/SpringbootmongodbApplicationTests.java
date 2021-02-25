@@ -13,29 +13,24 @@ class SpringbootmongodbApplicationTests {
 
     @Test
     void contextLoads() {
-        int[] A = new int[] {3, 1, 2, 4, 3};
+        int X = 5;
+        int[] A = {1, 3, 1, 4, 2, 3, 5, 4};
 
-        int result = solution(A);
+        int result = solution(X, A);
         System.out.println(result);
     }
 
-    public int solution(int[] A) {
-        int total = Arrays.stream(A).sum();
-        int left = 0;
-        int prevDiff = total;
+    public int solution(int X, int[] A) {
+        Set<Integer> set = new HashSet<>();
 
         for(int i=0; i<A.length; i++) {
-            left += A[i];
-            int right = total - left;
-            int diff = Math.abs(left - right);
+            set.add(A[i]);
 
-            if(prevDiff < diff) {
-                return prevDiff;
+            if(set.size() == X) {
+                return i;
             }
-
-            prevDiff = diff;
         }
 
-        return prevDiff;
+        return -1;
     }
 }
