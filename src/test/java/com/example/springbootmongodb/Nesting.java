@@ -1,24 +1,8 @@
 package com.example.springbootmongodb;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import java.util.Stack;
 
-import java.util.*;
-
-import static java.util.stream.Collectors.toList;
-
-
-@SpringBootTest
-class SpringbootmongodbApplicationTests {
-
-    @Test
-    void contextLoads() {
-        String S = "(()(())())";
-
-        int result = solution(S);
-        System.out.println(result);
-    }
-
+public class Nesting {
     public int solution(String S) {
         if("".equals(S)) {
             return 1;
