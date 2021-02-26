@@ -13,39 +13,22 @@ class SpringbootmongodbApplicationTests {
 
     @Test
     void contextLoads() {
-        String S = "(()(())())";
+        int N = 10;
+        int M = 4;
 
-        int result = solution(S);
+        int result = solution(N, M);
         System.out.println(result);
     }
 
-    public int solution(String S) {
-        if("".equals(S)) {
-            return 1;
+    public int solution(int N, int M) {
+        return N / gcd(N, M);
+    }
+
+    public int gcd(int a, int b) {
+        if(a % b == 0) {
+            return b;
         }
 
-        Stack<String> stack = new Stack<>();
-
-        for(int i=0; i<S.length(); i++) {
-            if('(' == S.charAt(i)) {
-                stack.push("(");
-                continue;
-            }
-
-            if(!stack.empty()) {
-                if("(".equals(stack.peek())) {
-                    stack.pop();
-                    continue;
-                }
-            }
-
-            return 0;
-        }
-
-        if(stack.empty()) {
-            return 1;
-        }
-
-        return 0;
+        return gcd(b, a%b);
     }
 }
