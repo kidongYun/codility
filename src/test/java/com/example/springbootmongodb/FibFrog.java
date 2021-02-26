@@ -1,24 +1,9 @@
 package com.example.springbootmongodb;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
-
-import static java.util.stream.Collectors.toList;
-
-
-@SpringBootTest
-class SpringbootmongodbApplicationTests {
-
-    @Test
-    void contextLoads() {
-        int[] A = {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0};
-
-        int result = solution(A);
-        System.out.println(result);
-    }
-
+public class FibFrog {
     public int solution(int[] A) {
         if(A.length == 0 || A.length == 1 || A.length == 2) return 1;
 
