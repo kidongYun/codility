@@ -13,33 +13,25 @@ class SpringbootmongodbApplicationTests {
 
     @Test
     void contextLoads() {
-        int[] A = {0, 1, 0, 1, 1};
+        int[] A = {10, 2, 5, 1, 8, 20};
 
         int result = solution(A);
         System.out.println(result);
     }
 
     public int solution(int[] A) {
-        if (A.length == 1) return 0;
-
-        int answer = 0;
-        int globalSum = 0;
-        int localSum = 0;
-
-        for(int i=0; i<A.length; i++) {
-            if(A[i] == 1) {
-                answer += localSum + globalSum;
-                globalSum += localSum;
-                localSum = 0;
-
-                if (answer > 1000000000) return -1;
-
-                continue;
-            }
-
-            localSum++;
+        if(A.length == 0 || A.length == 1 || A.length == 2) {
+            return 0;
         }
 
-        return answer;
+        Arrays.sort(A);
+
+        for(int i=0; i<A.length-2; i++) {
+            if(A[i] + A[i+1] > A[i+2]) {
+                return 1;
+            }
+        }
+
+        return 0;
     }
 }
